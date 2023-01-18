@@ -10,6 +10,7 @@ class Fahrkartenautomat {
 		double eingeworfeneMuenze;
 		double rueckgabebetrag;
 		double nochZuZahlen;
+        
 
 		// 1
 		System.out.print("Zu zahlender Betrag (Euro): ");
