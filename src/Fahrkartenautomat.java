@@ -1,6 +1,12 @@
 import java.util.Scanner;
 
 class Fahrkartenautomat {
+	
+	public static void begreussung(){
+
+		System.out.println("Herzlich Willkommen!");
+	}
+	
 	public static void main(String[] args) {
 
 		Scanner tastatur = new Scanner(System.in);
@@ -13,6 +19,9 @@ class Fahrkartenautomat {
         double Ticketpreis;
 		double AnzahlTickets;
 
+		
+		
+		begreussung();
 		// Geldbetrag eingeben
 		System.out.print("Ticketpreis (Euro): ");
 		Ticketpreis = tastatur.nextDouble();
@@ -82,4 +91,6 @@ class Fahrkartenautomat {
 
 		tastatur.close();
 	}
+
+	
 }
