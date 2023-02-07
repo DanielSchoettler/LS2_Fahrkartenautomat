@@ -1,0 +1,19 @@
+import os
+from PIL import Image
+
+def convert_heic_to_jpeg(input_folder, output_folder):
+    # Für jede HEIC-Datei im Eingabeverzeichnis
+    for filename in os.listdir(input_folder):
+        if filename.endswith('.heic'):
+            # Öffnen Sie die HEIC-Datei mit PIL
+            heic_image = Image.open(f'{input_folder}/{filename}')
+            # Erstellen Sie den JPEG-Dateinamen
+            jpeg_filename = filename.replace('.heic', '.jpeg')
+            # Speichern Sie die HEIC-Datei als JPEG
+            heic_image.save(f'{output_folder}/{jpeg_filename}', 'JPEG')
+            print(f'{filename} wurde erfolgreich in {jpeg_filename} umgewandelt.')
+
+# Beispielaufruf
+input_folder = '/path/to/input/folder'
+output_folder = '/path/to/output/folder'
+convert_heic_to_jpeg(input_folder, output_folder)
