@@ -16,7 +16,7 @@ public class Tabelle {
         int vier = 20;
         int fünf = 30; 
         
-        char T = '-';
+        //char T = '-';
         
         
         System.out.printf("%-11s| %7s \n", F , C );

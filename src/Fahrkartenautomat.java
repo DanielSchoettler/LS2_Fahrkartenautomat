@@ -20,36 +20,43 @@ class Fahrkartenautomat {
 		zuZahlenderBetrag = Ticketpreis * AnzahlTickets;
 		return zuZahlenderBetrag;
 	}
+	public static double fahrkartenBezahlen(Scanner tastatur,double zuZahlenderBetrag){
+		
+		//double zuZahlenderBetrag;
+		double eingezahlterGesamtbetrag;
+		double nochZuZahlen;
+		double eingeworfeneMuenze;
+
+		eingezahlterGesamtbetrag = 0.0;
+		nochZuZahlen = 0.0;
+		while (eingezahlterGesamtbetrag < zuZahlenderBetrag){
+			nochZuZahlen = zuZahlenderBetrag - eingezahlterGesamtbetrag;
+			System.out.printf("Noch zu zahlen: %.2f Euro \n", nochZuZahlen);
+			System.out.print("Eingabe (mind. 5 Cent, höchstens 2 Euro): ");
+			eingeworfeneMuenze = tastatur.nextDouble();
+			eingezahlterGesamtbetrag = eingezahlterGesamtbetrag + eingeworfeneMuenze;
+			
+		}
+		return eingezahlterGesamtbetrag;
+
+    }
+
 	public static void main(String[] args) {
 
 		Scanner tastatur = new Scanner(System.in);
 
 		double zuZahlenderBetrag;
 		double eingezahlterGesamtbetrag;
-		double eingeworfeneMuenze;
-		double rueckgabebetrag;
-		double nochZuZahlen;
+	    double rueckgabebetrag;
+		
       
-
-		
-		
 		begreussung();
 		zuZahlenderBetrag = fahrkartenbestellungErfassen(tastatur);
-		
+		eingezahlterGesamtbetrag = fahrkartenBezahlen(tastatur, zuZahlenderBetrag);
 
 
-		// Geldeinwurf
-		eingezahlterGesamtbetrag = 0.0;
-		nochZuZahlen = 0.0;
-		while (eingezahlterGesamtbetrag < zuZahlenderBetrag) {
-			nochZuZahlen = zuZahlenderBetrag - eingezahlterGesamtbetrag;
-			System.out.printf("Noch zu zahlen: %.2f Euro \n", nochZuZahlen);
-			System.out.print("Eingabe (mind. 5 Cent, höchstens 2 Euro): ");
-			eingeworfeneMuenze = tastatur.nextDouble();
-			eingezahlterGesamtbetrag = eingezahlterGesamtbetrag + eingeworfeneMuenze;
-		}
 		
-		// Fahrscheinausgabe
+		  //Fahrscheinausgabe
 		System.out.println("\nFahrschein wird ausgegeben");
 		for (int i = 0; i < 8; i++) {
 			System.out.print("=");
