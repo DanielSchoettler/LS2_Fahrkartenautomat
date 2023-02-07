@@ -6,7 +6,20 @@ class Fahrkartenautomat {
 
 		System.out.println("Herzlich Willkommen!");
 	}
-	
+	public static double fahrkartenbestellungErfassen(Scanner tastatur){
+		
+		double Ticketpreis;
+		double AnzahlTickets;
+		double zuZahlenderBetrag;
+
+		System.out.print("Ticketpreis (Euro): ");
+		Ticketpreis = tastatur.nextDouble();
+		System.out.print("Anzahl der Tickets: ");
+		AnzahlTickets = tastatur.nextDouble();
+		
+		zuZahlenderBetrag = Ticketpreis * AnzahlTickets;
+		return zuZahlenderBetrag;
+	}
 	public static void main(String[] args) {
 
 		Scanner tastatur = new Scanner(System.in);
@@ -16,19 +29,14 @@ class Fahrkartenautomat {
 		double eingeworfeneMuenze;
 		double rueckgabebetrag;
 		double nochZuZahlen;
-        double Ticketpreis;
-		double AnzahlTickets;
+      
 
 		
 		
 		begreussung();
-		// Geldbetrag eingeben
-		System.out.print("Ticketpreis (Euro): ");
-		Ticketpreis = tastatur.nextDouble();
-		System.out.print("Anzahl der Tickets: ");
-		AnzahlTickets = tastatur.nextDouble();
+		zuZahlenderBetrag = fahrkartenbestellungErfassen(tastatur);
+		
 
-		zuZahlenderBetrag = Ticketpreis * AnzahlTickets;
 
 		// Geldeinwurf
 		eingezahlterGesamtbetrag = 0.0;
