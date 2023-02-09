@@ -41,6 +41,22 @@ class Fahrkartenautomat {
 
     }
 
+	public static void fahrkartenAusgeben(){
+		
+		System.out.println("\nFahrschein wird ausgegeben");
+		for (int i = 0; i < 8; i++) {
+			System.out.print("=");
+			try {
+				Thread.sleep(200);
+			} 
+			catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		System.out.println("\n\n");
+
+
+	}
 	public static void main(String[] args) {
 
 		Scanner tastatur = new Scanner(System.in);
@@ -53,22 +69,12 @@ class Fahrkartenautomat {
 		begreussung();
 		zuZahlenderBetrag = fahrkartenbestellungErfassen(tastatur);
 		eingezahlterGesamtbetrag = fahrkartenBezahlen(tastatur, zuZahlenderBetrag);
+		fahrkartenAusgeben();
 
+//letzter stand A6.2.4
+		
+		 
 
-		
-		  //Fahrscheinausgabe
-		System.out.println("\nFahrschein wird ausgegeben");
-		for (int i = 0; i < 8; i++) {
-			System.out.print("=");
-			try {
-				Thread.sleep(200);
-			} 
-			catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		System.out.println("\n\n");
-		
 		// Rückgeldberechnung und -ausgabe
 		rueckgabebetrag = eingezahlterGesamtbetrag - zuZahlenderBetrag;
 		if (rueckgabebetrag > 0.0) {
