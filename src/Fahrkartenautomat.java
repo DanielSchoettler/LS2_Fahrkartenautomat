@@ -41,9 +41,16 @@ class Fahrkartenautomat {
 		while (eingezahlterGesamtbetrag < zuZahlenderBetrag){
 			nochZuZahlen = zuZahlenderBetrag - eingezahlterGesamtbetrag;
 			System.out.printf("Noch zu zahlen: %.2f Euro \n", nochZuZahlen);
-			System.out.print("Eingabe (mind. 5 Cent, höchstens 2 Euro): ");
+			System.out.print("Eingabe (mind. 5 Cent, höchstens 20 Euro): ");
 			eingeworfeneMuenze = tastatur.nextDouble();
-			eingezahlterGesamtbetrag = eingezahlterGesamtbetrag + eingeworfeneMuenze;
+			
+			if (eingeworfeneMuenze == 0.05 || eingeworfeneMuenze == 0.10 || eingeworfeneMuenze == 0.20 || eingeworfeneMuenze == 0.50
+            || eingeworfeneMuenze == 1.00 || eingeworfeneMuenze == 2.00 || eingeworfeneMuenze == 5.00 || eingeworfeneMuenze == 10.00
+            || eingeworfeneMuenze == 20.00) {
+            eingezahlterGesamtbetrag = eingezahlterGesamtbetrag + eingeworfeneMuenze;
+        } else {
+            System.out.println("Ungültige Eingabe. Bitte erneut eingeben.");
+        }
 			
 		}
 		return eingezahlterGesamtbetrag;
@@ -74,8 +81,20 @@ class Fahrkartenautomat {
 		rueckgabebetrag = eingezahlterGesamtbetrag - zuZahlenderBetrag;
 		if (rueckgabebetrag > 0.0) {
 			System.out.printf("Der Rückgabebetrag in Höhe von %.2f Euro \n", rueckgabebetrag);
-			System.out.println("wird in folgenden Münzen ausgezahlt:");
+			System.out.println("wird in folgenden Münzen/Schein ausgezahlt:");
 
+			while (rueckgabebetrag >= 20.0) { // 20-Euro-Münzen
+				System.out.println("20 Euro");
+				rueckgabebetrag = rueckgabebetrag - 20.0;
+			}
+			while (rueckgabebetrag >= 10.0) { // 10-Euro-Münzen
+				System.out.println("10 Euro");
+				rueckgabebetrag = rueckgabebetrag - 10.0;
+			}
+			while (rueckgabebetrag >= 5.0) { // 5-Euro-Münzen
+				System.out.println("5 Euro");
+				rueckgabebetrag = rueckgabebetrag - 5.0;
+			}
 			while (rueckgabebetrag >= 2.0) { // 2-Euro-Münzen
 				System.out.println("2 Euro");
 				rueckgabebetrag = rueckgabebetrag - 2.0;
@@ -129,8 +148,8 @@ class Fahrkartenautomat {
 		zuZahlenderBetrag = fahrkartenbestellungErfassen(tastatur);
 		eingezahlterGesamtbetrag = fahrkartenBezahlen(tastatur, zuZahlenderBetrag);
 		fahrkartenAusgeben();
-		rueckgeldAusgeben(zuZahlenderBetrag, eingezahlterGesamtbetrag);
-
+		rueckgeldAusgeben(eingezahlterGesamtbetrag,zuZahlenderBetrag);
+		
 		tastatur.close();
 
 		
