@@ -18,6 +18,13 @@ class Fahrkartenautomat {
 		System.out.print("Anzahl der Tickets: ");
 		AnzahlTickets = tastatur.nextDouble();
 		
+		if (AnzahlTickets < 1 || AnzahlTickets > 10 || AnzahlTickets <0) {
+
+			System.out.println("Fehlerhafte eingabe - Ticketanzahl wird auf 1 gesetzt");
+			AnzahlTickets = 1;
+
+		}
+
 		zuZahlenderBetrag = Ticketpreis * AnzahlTickets;
 		return zuZahlenderBetrag;
 	}
@@ -101,6 +108,12 @@ class Fahrkartenautomat {
 		return rueckgabebetrag;
 
 	}
+	
+	//public static double muenzRueckgabe(){
+
+
+
+
 	
 	
 	public static void main(String[] args) {
