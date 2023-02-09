@@ -6,6 +6,7 @@ class Fahrkartenautomat {
 
 		System.out.println("Herzlich Willkommen!");
 	}
+	
 	public static double fahrkartenbestellungErfassen(Scanner tastatur){
 		
 		double Ticketpreis;
@@ -20,9 +21,10 @@ class Fahrkartenautomat {
 		zuZahlenderBetrag = Ticketpreis * AnzahlTickets;
 		return zuZahlenderBetrag;
 	}
+	
 	public static double fahrkartenBezahlen(Scanner tastatur,double zuZahlenderBetrag){
 		
-		//double zuZahlenderBetrag;
+		
 		double eingezahlterGesamtbetrag;
 		double nochZuZahlen;
 		double eingeworfeneMuenze;
@@ -57,25 +59,11 @@ class Fahrkartenautomat {
 
 
 	}
-	public static void main(String[] args) {
 
-		Scanner tastatur = new Scanner(System.in);
+	public static double rueckgeldAusgeben(double eingezahlterGesamtbetrag,double zuZahlenderBetrag){
 
-		double zuZahlenderBetrag;
-		double eingezahlterGesamtbetrag;
-	    double rueckgabebetrag;
+		double rueckgabebetrag;
 		
-      
-		begreussung();
-		zuZahlenderBetrag = fahrkartenbestellungErfassen(tastatur);
-		eingezahlterGesamtbetrag = fahrkartenBezahlen(tastatur, zuZahlenderBetrag);
-		fahrkartenAusgeben();
-
-//letzter stand A6.2.4
-		
-		 
-
-		// Rückgeldberechnung und -ausgabe
 		rueckgabebetrag = eingezahlterGesamtbetrag - zuZahlenderBetrag;
 		if (rueckgabebetrag > 0.0) {
 			System.out.printf("Der Rückgabebetrag in Höhe von %.2f Euro \n", rueckgabebetrag);
@@ -107,10 +95,34 @@ class Fahrkartenautomat {
 			}
 		}
 
-		System.out.println("\nVergessen Sie nicht, den Fahrschein\n" + "vor Fahrtantritt entwerten zu lassen!\n"
+		 System.out.println("\nVergessen Sie nicht, den Fahrschein\n" + "vor Fahrtantritt entwerten zu lassen!\n"
 				+ "Wir wünschen Ihnen eine gute Fahrt.");
 
+		return rueckgabebetrag;
+
+	}
+	
+	
+	public static void main(String[] args) {
+
+		Scanner tastatur = new Scanner(System.in);
+
+		double zuZahlenderBetrag;
+		double eingezahlterGesamtbetrag;
+	    
+		
+      
+		begreussung();
+		zuZahlenderBetrag = fahrkartenbestellungErfassen(tastatur);
+		eingezahlterGesamtbetrag = fahrkartenBezahlen(tastatur, zuZahlenderBetrag);
+		fahrkartenAusgeben();
+		rueckgeldAusgeben(zuZahlenderBetrag, eingezahlterGesamtbetrag);
+
 		tastatur.close();
+
+		
+		 
+
 	}
 
 	
